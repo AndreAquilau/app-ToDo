@@ -1,7 +1,7 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "./dist/services/server.js",
   "author": "Andre Aquilau <Andre.Aquilau@outlook.com>",
   "license": "MIT",
   "devDependencies": {

@@ -1,13 +1,14 @@
 import express, { Application } from 'express';
+import InterfaceApp from './interface/App';
 
-export default class App {
+export default class AppAdapterExpress implements InterfaceApp {
   constructor(public app: Application) {}
 
   adapter(module) {
     this.app.use(module);
   }
 
-  adapterStatic(baseUrl: string, path: string) {
+  adapterStaticFiles(baseUrl: string, path: string) {
     this.app.use(baseUrl, express.static(path));
   }
 

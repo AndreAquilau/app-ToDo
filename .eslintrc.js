@@ -34,5 +34,6 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     'consistent-return': 'off',
     'no-useless-constructor': 'off',
+    '@typescript-eslint/ban-types': 'off',
   },
 };

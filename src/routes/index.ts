@@ -1,17 +1,18 @@
-import { Router, Request, Response } from 'express';
+import { Router } from 'express';
+import RouterExpressAdapter from './RouterAdapterExpress';
 
-const router = Router();
+const router = new RouterExpressAdapter(Router());
 
-router.get('/', (req: Request, res: Response) => {
+router.adapterGet('/', (req, res) => {
   try {
     return res.status(200).json({
       message: 'API OK',
     });
   } catch (err) {
     return res.status(400).json({
-      error: [`Error request ${err.message}`],
+      error: ['Bad Request Not Authorization'],
     });
   }
 });
 
-export default router;
+export default router.adapterRouter();

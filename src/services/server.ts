@@ -3,12 +3,12 @@ import 'reflect-metadata';
 import database from '@database/index';
 import express from 'express';
 import routes from '@routes/index';
-import App from './App';
-import Seguranty from './Seguranty';
-import Debugging from './Debugging';
-import ParserHTTP from './ParserHTTP';
-import Domain from './Domain';
-import Static from './Static';
+import App from './AppAdapterExpress';
+import Seguranty from './class/Seguranty';
+import Debugging from './class/Debugging';
+import ParserHTTP from './class/ParserHTTP';
+import Domain from './class/Domain';
+import Static from './class/Static';
 
 const app = new App(express());
 const seguranty = new Seguranty();
@@ -19,7 +19,7 @@ const parserHTTP = new ParserHTTP();
 
 app.adapter(seguranty.headers());
 app.adapter(debugging.request());
-app.adapterStatic(filestatic.staticUrl, filestatic.pathStatic);
+app.adapterStaticFiles(filestatic.staticUrl, filestatic.pathStatic);
 app.adapter(domain.origin());
 app.adapter(parserHTTP.urlencoded());
 app.adapter(parserHTTP.json());
