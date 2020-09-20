@@ -8,6 +8,6 @@ module.exports = {
   subscribers: [process.env.TYPEORM_SUBSCRIBES || './dist/subscribers/**/*.js'],
   cli: {
     entitiesDir: process.env.TYPEORM_ENTITIES_DIR,
-    migrationsDIR: process.env.TYPEORM_MIGRATIONS_DIR,
+    migrationsDir: process.env.TYPEORM_MIGRATIONS_DIR,
   },
 };
