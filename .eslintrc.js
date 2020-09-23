@@ -35,5 +35,6 @@ module.exports = {
     'consistent-return': 'off',
     'no-useless-constructor': 'off',
     '@typescript-eslint/ban-types': 'off',
+    'no-shadow': 'off',
   },
 };

@@ -1,30 +1,9 @@
-import Request from './Request';
-import Response from './Response';
-
-export default interface InterfaceRouter {
-  router: object;
-
-  adapterMiddleware(useUrl: string, middleware): void;
-
-  adapterGet(
-    useUrl: string,
-    middleware: (req: Request, res: Response) => {},
-  ): void;
-
-  adapterPost(
-    useUrl: string,
-    middleware: (req: Request, res: Response) => {},
-  ): void;
-
-  adapterPut(
-    useUrl: string,
-    middleware: (req: Request, res: Response) => {},
-  ): void;
-
-  adapterDelete(
-    useUrl: string,
-    middleware: (req: Request, res: Response) => {},
-  ): void;
-
-  adapterRouter();
+export default interface Router {
+  router;
+  get(path: string, ...args: any[]): any;
+  post(path: string, ...args: any[]): any;
+  put(path: string, ...args: any[]): any;
+  delete(path: string, ...args: any[]): any;
+  use(path: string, ...args: any[]): any;
+  Router();
 }

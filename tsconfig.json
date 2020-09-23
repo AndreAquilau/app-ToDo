@@ -47,14 +47,14 @@
       "@config/*": [
         "./src/config/*"
       ],
-      "@constrollers/*": [
+      "@controllers/*": [
         "./src/controllers/*"
       ],
       "@database/*": [
         "./src/database/*"
       ],
-      "@models/*": [
-        "./src/models/*"
+      "@model/*": [
+        "./src/model/*"
       ],
       "@repository/*": [
         "./src/repository/*"
