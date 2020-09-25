@@ -1,5 +1,5 @@
-export default interface InterfaceRequest<Body> {
+export default interface InterfaceRequest<Body, Params> {
   body: Body;
-  params: object;
+  params: Params;
   headers: object;
 }

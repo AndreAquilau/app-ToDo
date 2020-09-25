@@ -1,8 +1,12 @@
 import { Router } from 'express';
 import RouterInterface from './interface/Router';
 
-class RouterExpress implements RouterInterface {
-  router = Router();
+export default class RouterAdapter implements RouterInterface {
+  router: Router;
+
+  constructor() {
+    this.router = Router();
+  }
 
   use(path: any, ...args: any[]) {
     this.router.use(path, ...args);
@@ -28,5 +32,3 @@ class RouterExpress implements RouterInterface {
     return this.router;
   }
 }
-
-export default new RouterExpress().Router();
