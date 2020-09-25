@@ -23,4 +23,8 @@ export default class TaskRepository
       },
     });
   }
+
+  async taskUpdateStatus(id: string, done: boolean): Promise<any> {
+    return await this.update({ id }, { done });
+  }
 }

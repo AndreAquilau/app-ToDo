@@ -19,7 +19,7 @@ class TaskController implements Controller<Task, Param> {
       });
     } catch (error) {
       console.log(`Error ${error.message}`);
-      return response.status(400).json({
+      return response.status(500).json({
         error: ['Error is not Authorization'],
       });
     }
@@ -34,7 +34,7 @@ class TaskController implements Controller<Task, Param> {
       });
     } catch (error) {
       console.log(`Error ${error.message}`);
-      return response.status(400).json({
+      return response.status(500).json({
         error: ['Error is not Authorization'],
       });
     }
@@ -52,7 +52,7 @@ class TaskController implements Controller<Task, Param> {
       });
     } catch (err) {
       console.log(err.message);
-      return response.status(400).json({
+      return response.status(500).json({
         errors: ['Error in update task'],
       });
     }
@@ -71,7 +71,7 @@ class TaskController implements Controller<Task, Param> {
       });
     } catch (err) {
       console.log(err.message);
-      return response.status(400).json({
+      return response.status(500).json({
         errors: ['Error in update task'],
       });
     }
@@ -90,7 +90,7 @@ class TaskController implements Controller<Task, Param> {
       });
     } catch (err) {
       console.log(err.message);
-      return response.status(400).json({
+      return response.status(500).json({
         errors: ['Error in task show'],
       });
     }
@@ -107,8 +107,34 @@ class TaskController implements Controller<Task, Param> {
       });
     } catch (err) {
       console.log(err.message);
-      return response.status(400).json({
+      return response.status(500).json({
         errors: ['Error in task show'],
+      });
+    }
+  }
+
+  async done(request: Request<Task, Param>, response: Response) {
+    try {
+      const { id, done } = request.params;
+
+      if (!(typeof done === 'boolean')) {
+        return response.status(500).json({
+          errors: ['Error in update task'],
+        });
+      }
+
+      const task = await getCustomRepository(TaskRepository).taskUpdateStatus(
+        id,
+        done,
+      );
+
+      return response.status(200).json({
+        data: task,
+      });
+    } catch (err) {
+      console.log(err.message);
+      return response.status(500).json({
+        errors: ['Error in update task'],
       });
     }
   }
