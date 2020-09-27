@@ -10,7 +10,7 @@
   * reflect-metadata
   * pg
 ----------------------------------------------------------------------------------
-##### Entity
+##### @Entity
 ~~~ts
 import {
   Column,
@@ -78,7 +78,7 @@ export default class TaskModel<whenType> implements Task<whenType> {
 }
 ~~~
 -------------------------------------------------------------------------------------------------
-#### ViewEntity
+#### @ViewEntity
 ~~~ts
 import TaskModel from '@model/TaskModel';
 import { Column, ViewEntity } from 'typeorm';
