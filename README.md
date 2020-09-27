@@ -162,6 +162,7 @@ export default class TaskRepository
 ### Validator
 
 ### Date-fns
+-----------------------------------------------------------------------------------------------
 ~~~ts
 import {
   startOfWeek,
@@ -173,7 +174,7 @@ import {
 } from 'date-fns';
 ~~~
 #### Se passa a data atual ira retorna todos os metodos referente ao mês, semana e ano.
-|Método          |   Retorno   |   Parametro   |
+|Método          |   Retorno   |   Parametro   |                 Observação                   |
 |----------------|-------------|---------------|----------------------------------------------|
 |startOfWeek     |    Date     |Date or Number | Retorna o inicio data da semana.             |
 |endOfWeek       |    Date     |Date or Number | Retorna a data do final da semana.           |
