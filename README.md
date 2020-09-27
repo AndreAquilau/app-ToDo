@@ -164,10 +164,10 @@ export default class TaskRepository
 import { isPast } from 'date-fns';
 import validator from 'validator';
 ~~~
-|Método                            |       Retorno             |
-|----------------------------------|---------------------------|
-|validator.isUUID(uuid)            |         Boolean           |
-|validator.isMACAddress(macaddress)|         Boolean           |
+|Método                            |          Retorno          |          Observação             |
+|----------------------------------|---------------------------|---------------------------------|
+|validator.isUUID(uuid)            |         Boolean           |Valida se é um UUID valido.      |
+|validator.isMACAddress(macaddress)|         Boolean           |Valida se é um MACaddress valido.|
 ### Date-fns
 -----------------------------------------------------------------------------------------------
 ~~~ts
