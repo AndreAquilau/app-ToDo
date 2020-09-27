@@ -160,4 +160,7 @@ export default class TaskRepository
 ~~~
 
 ### Validator
+|------------------------------|
+|Método          |   Retorno   |
+|----------------|-------------|
 ### Date-fns
