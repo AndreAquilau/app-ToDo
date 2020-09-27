@@ -10,7 +10,7 @@
   * reflect-metadata
   * pg
 ----------------------------------------------------------------------------------
-##### @Entity
+#### @Entity
 ~~~ts
 import {
   Column,
@@ -78,7 +78,7 @@ export default class TaskModel<whenType> implements Task<whenType> {
 }
 ~~~
 -------------------------------------------------------------------------------------------------
-##### @ViewEntity
+#### @ViewEntity
 ~~~ts
 import TaskModel from '@model/TaskModel';
 import { Column, ViewEntity } from 'typeorm';
@@ -94,7 +94,7 @@ export default class VWTask extends TaskModel<string> {
 }
 ~~~
 
-##### Where and Order
+#### Where and Order
 ~~~ts
 this.find({
       where: { macaddress },
@@ -102,7 +102,7 @@ this.find({
         when: 'ASC',
       }
 ~~~
-##### Like
+#### Like
 ~~~ts
 this.find({
         where: {
@@ -112,7 +112,7 @@ this.find({
       });
 ~~~
 -------------------------------------------------------------------------------------------------
-##### @EntityRepository
+#### @EntityRepository
 ~~~ts
 import TaskModel from '@model/TaskModel';
 import { EntityRepository, Like, Repository } from 'typeorm';
