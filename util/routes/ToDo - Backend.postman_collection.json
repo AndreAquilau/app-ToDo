@@ -1,0 +1,349 @@
+{
+	"info": {
+		"_postman_id": "c5c452f8-82c8-41be-80b8-db7f23ebee70",
+		"name": "ToDo - Backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Task",
+			"item": [
+				{
+					"name": "index",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/task/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"task",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "store",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"macaddress\": \"00:E0:4C:7E:6D:E3\",\r\n    \"type\": 1,\r\n    \"title\": \"Estudar Adobe XD\",\r\n    \"description\": \"Estudar como criar prototipos\",\r\n    \"when\": \"2020-09-29\",\r\n    \"done\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/task",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"task"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"when\": \"2020-09-27\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/task/39faa401-75b7-4b36-acc5-7dcdf6604462",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"task",
+								"39faa401-75b7-4b36-acc5-7dcdf6604462"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updatedone",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/task/1cb42af0-9db4-47e1-93d8-06ddac32338b/true",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"task",
+								"1cb42af0-9db4-47e1-93d8-06ddac32338b",
+								"true"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "allmacaddress",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/task/filter/all",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"task",
+								"filter",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "filterlate",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"macaddress\": \"00:E0:4C:7E:6D:E3\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/task/filter/late",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"task",
+								"filter",
+								"late"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "filtertoday",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"macaddress\": \"00:E0:4C:7E:6D:E3\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/task/filter/today",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"task",
+								"filter",
+								"today"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "filterweek",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"macaddress\": \"00:E0:4C:7E:6D:E3\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/task/filter/week",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"task",
+								"filter",
+								"week"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "filtermonth",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"macaddress\": \"00:E0:4C:7E:6D:E3\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/task/filter/month",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"task",
+								"filter",
+								"month"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "filteryear",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"macaddress\": \"00:E0:4C:7E:6D:E3\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/task/filter/year",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"task",
+								"filter",
+								"year"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/task/39faa401-75b7-4b36-acc5-7dcdf6604462",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"task",
+								"39faa401-75b7-4b36-acc5-7dcdf6604462"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/task/23434234234",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"task",
+								"23434234234"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

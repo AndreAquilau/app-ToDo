@@ -11,7 +11,7 @@ export default async (
   next: Next,
 ) => {
   try {
-    const { macaddress } = request.body;
+    const { macaddress } = request.params;
 
     if (!macaddress) {
       return response.status(404).json({

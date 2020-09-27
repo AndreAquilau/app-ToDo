@@ -7,6 +7,9 @@ import taskValidationDelete from '@middleware/taskValidationDelete';
 import taskValidationShow from '@middleware/taskValidationShow';
 import taskValidationLate from '@middleware/taskValidationLate';
 import taskValidationToday from '@middleware/taskValidationToday';
+import taskValidationWeek from '@middleware/taskValidationWeek';
+import taskValidationMonth from '@middleware/taskValidationMonth';
+import taskValidationYear from '@middleware/taskValidationYear';
 import RouterAdapter from './Router';
 
 const router = new RouterAdapter();
@@ -15,11 +18,22 @@ router.get('/', TaskController.index);
 
 router.get('/:id', taskValidationShow, TaskController.show);
 
-router.get('/filter/late', taskValidationLate, TaskController.late);
-router.get('/filter/today', taskValidationToday, TaskController.today);
+router.get('/filter/late/:macaddress', taskValidationLate, TaskController.late);
+router.get(
+  '/filter/today/:macaddress',
+  taskValidationToday,
+  TaskController.today,
+);
+router.get('/filter/week/:macaddress', taskValidationWeek, TaskController.week);
+router.get(
+  '/filter/month/:macaddress',
+  taskValidationMonth,
+  TaskController.month,
+);
+router.get('/filter/year/:macaddress', taskValidationYear, TaskController.year);
 
 router.get(
-  '/filter/all',
+  '/filter/all/:macaddress',
   taskValidationAllMacaddress,
   TaskController.allMacaddress,
 );

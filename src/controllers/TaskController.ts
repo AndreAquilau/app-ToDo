@@ -9,8 +9,6 @@ import Param from '@routes/interface/Param';
 import TaskRepository from '@repository/TaskRepository';
 import VWTaskRepository from '@repository/VWTaskRepository';
 
-const current = new Date();
-
 class TaskController implements Controller<Task<Date>, Param> {
   async store(request: Request<Task<Date>, Param>, response: Response) {
     try {
@@ -73,7 +71,7 @@ class TaskController implements Controller<Task<Date>, Param> {
 
   async allMacaddress(request: Request<Task<Date>, Param>, response: Response) {
     try {
-      const { macaddress } = request.body;
+      const { macaddress } = request.params;
 
       const task = await getCustomRepository(TaskRepository).taskByMacaddress(
         macaddress,
@@ -129,7 +127,7 @@ class TaskController implements Controller<Task<Date>, Param> {
 
   async late(request: Request<Task<Date>, Param>, response: Response) {
     try {
-      const { macaddress } = request.body;
+      const { macaddress } = request.params;
 
       const tasks = await getCustomRepository(TaskRepository).lateTask(
         macaddress,
@@ -145,7 +143,7 @@ class TaskController implements Controller<Task<Date>, Param> {
 
   async today(request: Request<Task<string>, Param>, response: Response) {
     try {
-      const { macaddress } = request.body;
+      const { macaddress } = request.params;
 
       const tasks = await getCustomRepository(VWTaskRepository).todayTask(
         macaddress,
@@ -155,6 +153,51 @@ class TaskController implements Controller<Task<Date>, Param> {
     } catch (err) {
       response.status(500).json({
         errors: [{ message: err }],
+      });
+    }
+  }
+
+  async week(request: Request<Task<string>, Param>, response: Response) {
+    try {
+      const { macaddress } = request.params;
+
+      const tasks = await await getCustomRepository(VWTaskRepository).weekTask(
+        macaddress,
+      );
+      response.status(200).json(tasks);
+    } catch (err) {
+      response.status(500).json({
+        errors: [{ message: err.message }],
+      });
+    }
+  }
+
+  async month(request: Request<Task<string>, Param>, response: Response) {
+    try {
+      const { macaddress } = request.params;
+
+      const tasks = await await getCustomRepository(VWTaskRepository).monthTask(
+        macaddress,
+      );
+      response.status(200).json(tasks);
+    } catch (err) {
+      response.status(500).json({
+        errors: [{ message: err.message }],
+      });
+    }
+  }
+
+  async year(request: Request<Task<string>, Param>, response: Response) {
+    try {
+      const { macaddress } = request.body;
+
+      const tasks = await await getCustomRepository(VWTaskRepository).yearTask(
+        macaddress,
+      );
+      response.status(200).json(tasks);
+    } catch (err) {
+      response.status(500).json({
+        errors: [{ message: err.message }],
       });
     }
   }
