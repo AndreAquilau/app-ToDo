@@ -161,7 +161,6 @@ export default class TaskRepository
 
 ### Validator
 ~~~ts
-import { isPast } from 'date-fns';
 import validator from 'validator';
 ~~~
 |Método                            |          Retorno          |          Observação             |
