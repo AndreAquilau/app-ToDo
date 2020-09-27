@@ -174,11 +174,11 @@ import {
 } from 'date-fns';
 ~~~
 #### Se passa a data atual ira retorna todos os metodos referente ao mês, semana e ano.
-|Método          |   Retorno   |   Parametro   |                 Observação                   |
-|----------------|-------------|---------------|----------------------------------------------|
-|startOfWeek     |    Date     |Date or Number | Retorna o inicio data da semana.             |
-|endOfWeek       |    Date     |Date or Number | Retorna a data do final da semana.           |
-|startOfMonth    |    Date     |Date or Number | Retorna o inicio data da do mês.             |
-|endOfMonth      |    Date     |Date or Number | Retorna o final da data do mês.              |
-|endOfYear       |    Date     |Date or Number | Retorna o inicio da data do ano.             |
-|startOfYear     |    Date     |Date or Number | Retorna o final da data do ano.              |
+|Método          |   Retorno   |              Format                  |   Parametro   |                 Observação                   |
+|----------------|-------------|--------------------------------------|---------------|----------------------------------------------|
+|startOfWeek     |    Date     |   YYYY-MM-DDTHs:Ms:Ss.Mls            |Date or Number | Retorna o inicio data da semana.             |
+|endOfWeek       |    Date     |   YYYY-MM-DDTHs:Ms:Ss.Mls            |Date or Number | Retorna a data do final da semana.           |
+|startOfMonth    |    Date     |   YYYY-MM-DDTHs:Ms:Ss.Mls            |Date or Number | Retorna o inicio data da do mês.             |
+|endOfMonth      |    Date     |   YYYY-MM-DDTHs:Ms:Ss.Mls            |Date or Number | Retorna o final da data do mês.              |
+|endOfYear       |    Date     |   YYYY-MM-DDTHs:Ms:Ss.Mls            |Date or Number | Retorna o inicio da data do ano.             |
+|startOfYear     |    Date     |   YYYY-MM-DDTHs:Ms:Ss.Mls            |Date or Number | Retorna o final da data do ano.              |
