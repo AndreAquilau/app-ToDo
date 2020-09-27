@@ -160,7 +160,14 @@ export default class TaskRepository
 ~~~
 
 ### Validator
-
+~~~ts
+import { isPast } from 'date-fns';
+import validator from 'validator';
+~~~
+|Método                            |       Retorno             |
+|----------------------------------|---------------------------|
+|validator.isUUID(uuid)            |         Boolean           |
+|validator.isMACAddress(macaddress)|         Boolean           |
 ### Date-fns
 -----------------------------------------------------------------------------------------------
 ~~~ts
@@ -171,6 +178,7 @@ import {
   endOfMonth,
   endOfYear,
   startOfYear,
+  isPast
 } from 'date-fns';
 ~~~
 #### Se passa a data atual ira retorna todos os metodos referente ao mês, semana e ano.
@@ -182,3 +190,5 @@ import {
 |endOfMonth      |    Date     |   YYYY-MM-DDTHs:Ms:Ss.Mls            |Date or Number | Retorna o final da data do mês.              |
 |endOfYear       |    Date     |   YYYY-MM-DDTHs:Ms:Ss.Mls            |Date or Number | Retorna o inicio da data do ano.             |
 |startOfYear     |    Date     |   YYYY-MM-DDTHs:Ms:Ss.Mls            |Date or Number | Retorna o final da data do ano.              |
+|isPasss         |   Boolean   |          true - false                |Date or Number | Retorna true caso a data esteja no passado.  |
+
