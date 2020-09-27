@@ -5,7 +5,6 @@ export default class DateConversion {
       hour: '2-digit',
       minute: '2-digit',
       second: '2-digit',
-      timeZone: 'America/Manaus',
     });
 
     const [year, month, dayTime] = timeStamp.split('-');
