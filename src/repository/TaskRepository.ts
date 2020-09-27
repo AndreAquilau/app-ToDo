@@ -1,5 +1,5 @@
 import TaskModel from '@model/TaskModel';
-import { EntityRepository, In, Like, Repository } from 'typeorm';
+import { EntityRepository, Like, Repository } from 'typeorm';
 import InterfaceTaskRepository from './interface/TaskRepository';
 import DateConversion from '../class/DateConversion';
 
