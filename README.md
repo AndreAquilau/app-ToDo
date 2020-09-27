@@ -93,6 +93,24 @@ export default class VWTask extends TaskModel<string> {
   when: string;
 }
 ~~~
+
+##### Where and Order
+~~~ts
+this.find({
+      where: { macaddress },
+      order: {
+        when: 'ASC',
+      }
+~~~
+##### Like
+~~~ts
+this.find({
+        where: {
+          when: Like(`'%${today}%'`),
+          macaddress
+        },
+      });
+~~~
 -------------------------------------------------------------------------------------------------
 ##### @EntityRepository
 ~~~ts
