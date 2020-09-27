@@ -1,4 +1,4 @@
-export default interface Task {
+export default interface Task<whenType> {
   id?: string;
 
   macaddress: string;
@@ -9,7 +9,7 @@ export default interface Task {
 
   description: string;
 
-  when: Date;
+  when: whenType;
 
   done: boolean;
 

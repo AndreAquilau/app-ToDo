@@ -8,7 +8,7 @@ import { getRepository } from 'typeorm';
 import validator from './Validate';
 
 export default async (
-  request: Request<Task, Param>,
+  request: Request<Task<Date>, Param>,
   response: Response,
   next: Next,
 ) => {

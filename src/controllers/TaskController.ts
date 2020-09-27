@@ -7,16 +7,16 @@ import TaskModel from '@model/TaskModel';
 import Task from '@model/interface/Task';
 import Param from '@routes/interface/Param';
 import TaskRepository from '@repository/TaskRepository';
-import { id } from 'date-fns/locale';
+import VWTaskRepository from '@repository/VWTaskRepository';
 
-class TaskController implements Controller<Task, Param> {
-  async store(request: Request<Task, Param>, response: Response) {
+const current = new Date();
+
+class TaskController implements Controller<Task<Date>, Param> {
+  async store(request: Request<Task<Date>, Param>, response: Response) {
     try {
       const task = getRepository(TaskModel);
       const res = await task.save(request.body);
-      return response.status(201).json({
-        task: res,
-      });
+      return response.status(201).json(res);
     } catch (error) {
       console.log(`Error ${error.message}`);
       return response.status(500).json({
@@ -25,13 +25,11 @@ class TaskController implements Controller<Task, Param> {
     }
   }
 
-  async index(request: Request<Task, Param>, response: Response) {
+  async index(request: Request<Task<Date>, Param>, response: Response) {
     try {
       const task = getRepository(TaskModel);
       const res = await task.find();
-      return response.status(200).json({
-        task: res,
-      });
+      return response.status(200).json(res);
     } catch (error) {
       console.log(`Error ${error.message}`);
       return response.status(500).json({
@@ -40,16 +38,14 @@ class TaskController implements Controller<Task, Param> {
     }
   }
 
-  async update(request: Request<Task, Param>, response: Response) {
+  async update(request: Request<Task<Date>, Param>, response: Response) {
     try {
       const { id } = request.params;
 
       const task = getRepository(TaskModel);
       const res = await task.update({ id }, request.body);
 
-      return response.status(200).json({
-        data: res,
-      });
+      return response.status(200).json(res);
     } catch (err) {
       console.log(err.message);
       return response.status(500).json({
@@ -58,7 +54,7 @@ class TaskController implements Controller<Task, Param> {
     }
   }
 
-  async delete(request: Request<Task, Param>, response: Response) {
+  async delete(request: Request<Task<Date>, Param>, response: Response) {
     try {
       const { id } = request.params;
       console.log(`Cheguei no Controller`);
@@ -66,9 +62,7 @@ class TaskController implements Controller<Task, Param> {
       const task = getRepository(TaskModel);
       const res = await task.delete({ id });
 
-      return response.status(200).json({
-        data: res,
-      });
+      return response.status(200).json(res);
     } catch (err) {
       console.log(err.message);
       return response.status(500).json({
@@ -77,7 +71,7 @@ class TaskController implements Controller<Task, Param> {
     }
   }
 
-  async allMacaddress(request: Request<Task, Param>, response: Response) {
+  async allMacaddress(request: Request<Task<Date>, Param>, response: Response) {
     try {
       const { macaddress } = request.body;
 
@@ -85,9 +79,7 @@ class TaskController implements Controller<Task, Param> {
         macaddress,
       );
 
-      return response.status(200).json({
-        data: task,
-      });
+      return response.status(200).json(task);
     } catch (err) {
       console.log(err.message);
       return response.status(500).json({
@@ -96,15 +88,13 @@ class TaskController implements Controller<Task, Param> {
     }
   }
 
-  async show(request: Request<Task, Param>, response: Response) {
+  async show(request: Request<Task<Date>, Param>, response: Response) {
     try {
       const { id } = request.params;
 
       const task = await getCustomRepository(TaskRepository).taskById(id);
 
-      return response.status(200).json({
-        data: task,
-      });
+      return response.status(200).json(task);
     } catch (err) {
       console.log(err.message);
       return response.status(500).json({
@@ -113,7 +103,7 @@ class TaskController implements Controller<Task, Param> {
     }
   }
 
-  async done(request: Request<Task, Param>, response: Response) {
+  async done(request: Request<Task<Date>, Param>, response: Response) {
     try {
       const { id, done } = request.params;
 
@@ -128,13 +118,43 @@ class TaskController implements Controller<Task, Param> {
         done,
       );
 
-      return response.status(200).json({
-        data: task,
-      });
+      return response.status(200).json(task);
     } catch (err) {
       console.log(err.message);
       return response.status(500).json({
         errors: ['Error in update task'],
+      });
+    }
+  }
+
+  async late(request: Request<Task<Date>, Param>, response: Response) {
+    try {
+      const { macaddress } = request.body;
+
+      const tasks = await getCustomRepository(TaskRepository).lateTask(
+        macaddress,
+      );
+
+      response.status(200).json(tasks);
+    } catch (err) {
+      response.status(500).json({
+        errors: [{ message: err }],
+      });
+    }
+  }
+
+  async today(request: Request<Task<string>, Param>, response: Response) {
+    try {
+      const { macaddress } = request.body;
+
+      const tasks = await getCustomRepository(VWTaskRepository).todayTask(
+        macaddress,
+      );
+
+      response.status(200).json(tasks);
+    } catch (err) {
+      response.status(500).json({
+        errors: [{ message: err }],
       });
     }
   }

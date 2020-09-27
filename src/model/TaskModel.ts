@@ -10,7 +10,7 @@ import Task from './interface/Task';
 
 @Index('pkey_task', ['id'], { unique: true })
 @Entity('task')
-export default class TaskModel implements Task {
+export default class TaskModel<whenType> implements Task<whenType> {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -36,7 +36,7 @@ export default class TaskModel implements Task {
     type: 'timestamp',
     nullable: false,
   })
-  when: Date;
+  when: whenType;
 
   @Column({
     name: 'done',

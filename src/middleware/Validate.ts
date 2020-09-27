@@ -3,7 +3,7 @@ import validator from 'validator';
 import ValidateInterface from './interface/Validate';
 
 class Validate implements ValidateInterface {
-  isPastDate(date: Date): boolean {
+  isPastDate(date: Date | number): boolean {
     return isPast(date);
   }
 

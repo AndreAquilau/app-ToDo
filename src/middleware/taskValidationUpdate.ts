@@ -3,27 +3,30 @@ import TaskModel from '@model/TaskModel';
 import Next from '@routes/interface/Next';
 import Request from '@routes/interface/Request';
 import Response from '@routes/interface/Response';
-import { getRepository } from 'typeorm';
+import { getRepository, In } from 'typeorm';
 import Param from '@routes/interface/Param';
 import validator from './Validate';
+import DateConversion from '../class/DateConversion';
 
 export default async (
-  request: Request<Task, Param>,
+  request: Request<Task<Date>, Param>,
   response: Response,
   next: Next,
 ) => {
   try {
     const errors: Array<object> = [];
     const { id } = request.params;
-    const { macaddress, when } = request.body;
+    const { when } = request.body;
 
     const exist = await getRepository(TaskModel).findOne({
       where: {
-        when: new Date(when || '01/12/2999'),
-        macaddress: !macaddress ? '' : macaddress,
+        id,
       },
     });
-
+    const timeZone = 60 * 1000;
+    const time = String(new Date(Date.now() + timeZone)).split(' ')[4];
+    const date = Date.parse(`${String(when)}T${time}`) + timeZone;
+    request.body.when = new Date(date);
     if (!id) errors.push({ message: 'id is required' });
 
     if (!validator.isUUID(id)) {
@@ -32,9 +35,10 @@ export default async (
       });
     }
 
-    if (validator.isPastDate(new Date(when || '01/12/2999')) && when)
+    if (validator.isPastDate(date))
       errors.push({ message: 'when is Past', value: when });
 
+    console.log(exist);
     if (!exist)
       errors.push({
         message: `task not exists`,

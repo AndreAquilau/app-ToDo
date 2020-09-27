@@ -27,6 +27,6 @@ export default async (
 
     next();
   } catch (err) {
-    return response.status(404).json({ errors: [{ message: err.message }] });
+    return response.status(500).json({ errors: [{ message: err.message }] });
   }
 };
