@@ -162,5 +162,21 @@ export default class TaskRepository
 ### Validator
 
 ### Date-fns
+~~~ts
+import {
+  startOfWeek,
+  endOfWeek,
+  startOfMonth,
+  endOfMonth,
+  endOfYear,
+  startOfYear,
+} from 'date-fns';
+~~~
 |Método          |   Retorno   |
 |----------------|-------------|
+|startOfWeek     |             |
+|endOfWeek       |             |
+|startOfMonth    |             |
+|endOfMonth      |             |
+|endOfYear       |             |
+|startOfYear     |             |
