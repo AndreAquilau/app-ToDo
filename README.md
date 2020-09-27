@@ -172,11 +172,12 @@ import {
   startOfYear,
 } from 'date-fns';
 ~~~
-|Método          |   Retorno   |
-|----------------|-------------|
-|startOfWeek     |             |
-|endOfWeek       |             |
-|startOfMonth    |             |
-|endOfMonth      |             |
-|endOfYear       |             |
-|startOfYear     |             |
+#### Se passa a data atual ira retorna todos os metodos referente ao mês, semana e ano.
+|Método          |   Retorno   |   Parametro   |
+|----------------|-------------|---------------|----------------------------------------------|
+|startOfWeek     |    Date     |Date or Number | Retorna o inicio data da semana.             |
+|endOfWeek       |    Date     |Date or Number | Retorna a data do final da semana.           |
+|startOfMonth    |    Date     |Date or Number | Retorna o inicio data da do mês.             |
+|endOfMonth      |    Date     |Date or Number | Retorna o final da data do mês.              |
+|endOfYear       |    Date     |Date or Number | Retorna o inicio da data do ano.             |
+|startOfYear     |    Date     |Date or Number | Retorna o final da data do ano.              |
