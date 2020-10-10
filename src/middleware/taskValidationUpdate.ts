@@ -25,8 +25,7 @@ export default async (
     });
     const timeZone = 60 * 1000;
     const time = String(new Date(Date.now() + timeZone)).split(' ')[4];
-    const date = Date.parse(`${String(when)}T${time}`) + timeZone;
-    request.body.when = new Date(date);
+
     if (!id) errors.push({ message: 'id is required' });
 
     if (!validator.isUUID(id)) {
@@ -35,7 +34,7 @@ export default async (
       });
     }
 
-    if (validator.isPastDate(date))
+    if (validator.isPastDate(when))
       errors.push({ message: 'when is Past', value: when });
 
     console.log(exist);

@@ -13,6 +13,7 @@ class TaskController implements Controller<Task<Date>, Param> {
   async store(request: Request<Task<Date>, Param>, response: Response) {
     try {
       const task = getRepository(TaskModel);
+      console.log(request.body.when);
       const res = await task.save(request.body);
       return response.status(201).json(res);
     } catch (error) {
@@ -45,7 +46,7 @@ class TaskController implements Controller<Task<Date>, Param> {
 
       return response.status(200).json(res);
     } catch (err) {
-      console.log(err.message);
+      console.log(err.message, err);
       return response.status(500).json({
         errors: ['Error in update task'],
       });
@@ -133,9 +134,9 @@ class TaskController implements Controller<Task<Date>, Param> {
         macaddress,
       );
 
-      response.status(200).json(tasks);
+      return response.status(200).json(tasks);
     } catch (err) {
-      response.status(500).json({
+      return response.status(500).json({
         errors: [{ message: err }],
       });
     }
@@ -149,9 +150,9 @@ class TaskController implements Controller<Task<Date>, Param> {
         macaddress,
       );
 
-      response.status(200).json(tasks);
+      return response.status(200).json(tasks);
     } catch (err) {
-      response.status(500).json({
+      return response.status(500).json({
         errors: [{ message: err }],
       });
     }
@@ -161,12 +162,12 @@ class TaskController implements Controller<Task<Date>, Param> {
     try {
       const { macaddress } = request.params;
 
-      const tasks = await await getCustomRepository(VWTaskRepository).weekTask(
+      const tasks = await getCustomRepository(VWTaskRepository).weekTask(
         macaddress,
       );
-      response.status(200).json(tasks);
+      return response.status(200).json(tasks);
     } catch (err) {
-      response.status(500).json({
+      return response.status(500).json({
         errors: [{ message: err.message }],
       });
     }
@@ -176,12 +177,12 @@ class TaskController implements Controller<Task<Date>, Param> {
     try {
       const { macaddress } = request.params;
 
-      const tasks = await await getCustomRepository(VWTaskRepository).monthTask(
+      const tasks = await getCustomRepository(VWTaskRepository).monthTask(
         macaddress,
       );
-      response.status(200).json(tasks);
+      return response.status(200).json(tasks);
     } catch (err) {
-      response.status(500).json({
+      return response.status(500).json({
         errors: [{ message: err.message }],
       });
     }
@@ -189,14 +190,14 @@ class TaskController implements Controller<Task<Date>, Param> {
 
   async year(request: Request<Task<string>, Param>, response: Response) {
     try {
-      const { macaddress } = request.body;
+      const { macaddress } = request.params;
 
-      const tasks = await await getCustomRepository(VWTaskRepository).yearTask(
+      const tasks = await getCustomRepository(VWTaskRepository).yearTask(
         macaddress,
       );
-      response.status(200).json(tasks);
+      return response.status(200).json(tasks);
     } catch (err) {
-      response.status(500).json({
+      return response.status(500).json({
         errors: [{ message: err.message }],
       });
     }

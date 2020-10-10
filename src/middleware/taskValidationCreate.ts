@@ -3,7 +3,7 @@ import TaskModel from '@model/TaskModel';
 import Next from '@routes/interface/Next';
 import Request from '@routes/interface/Request';
 import Response from '@routes/interface/Response';
-import { getRepository } from 'typeorm';
+import { getRepository, Like } from 'typeorm';
 import Param from '@routes/interface/Param';
 import validate from './Validate';
 
@@ -15,14 +15,16 @@ export default async (
   const errors: Array<object> = [];
 
   const { macaddress, type, title, description, when, done } = request.body;
+
   const exist = await getRepository(TaskModel).findOne({
     where: {
-      when: new Date(when),
-      macaddress: macaddress || '',
+      when,
+      macaddress,
     },
   });
+  console.log(exist);
 
-  if (!macaddress && macaddress !== '')
+  if (!macaddress)
     errors.push({ message: 'macaddress is required', value: macaddress });
 
   if (!type) errors.push({ messae: 'type is required', value: type });
@@ -46,10 +48,12 @@ export default async (
       value: when,
     });
 
-  if (errors.length > 0)
+  if (errors.length > 0) {
+    console.log(errors);
     return response.status(404).json({
       errors,
     });
+  }
 
   next();
 };
