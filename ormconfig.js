@@ -4,7 +4,7 @@ module.exports = {
   synchronize: false,
   logging: false,
   entities: [process.env.TYPEORM_ENTITIES || 'dist/model/**/*.js'],
-  migrations: [process.env.TYPEORM_MIGRATIONS || 'dist/database/magrations/**/*.js'],
+  migrations: [process.env.TYPEORM_MIGRATIONS || 'dist/database/migrations/**/*.js'],
   subscribers: [process.env.TYPEORM_SUBSCRIBES || 'dist/subscribers/**/*.js'],
   cli: {
     entitiesDir: process.env.TYPEORM_ENTITIES_DIR,
