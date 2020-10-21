@@ -1,6 +1,6 @@
 export default class DateConversion {
-  timeStamp(now: number | string | Date): string {
-    const current = new Date(now);
+  timeStamp(date) {
+    const current = new Date(date);
     const timeStamp = current.toLocaleDateString(undefined, {
       hour: '2-digit',
       minute: '2-digit',

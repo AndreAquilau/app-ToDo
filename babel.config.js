@@ -3,7 +3,7 @@ module.exports = {
     [
       '@babel/preset-env',
       {
-        target: {
+        targets: {
           node: 'current',
         },
       },
@@ -18,13 +18,16 @@ module.exports = {
           '@config': './src/config',
           '@controllers': './src/controllers',
           '@database': './src/database',
-          '@middleware': './src/middleware',
-          '@models': './src/models',
+          '@midlleware': './src/middleware',
+          '@model': './src/model',
           '@repository': './src/repository',
           '@routes': './src/routes',
           '@services': './src/services',
         },
       },
     ],
+    ['@babel/plugin-proposal-decorators', { legacy: true }],
+    ['@babel/plugin-proposal-class-properties', { loose: true }],
   ],
+  ignore: ['**/*.spec.ts'],
 };

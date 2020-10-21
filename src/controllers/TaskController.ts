@@ -1,16 +1,10 @@
-import Controller, {
-  Response,
-  Request,
-} from '@controllers/interface/Controller';
 import { getRepository, getCustomRepository } from 'typeorm';
 import TaskModel from '@model/TaskModel';
-import Task from '@model/interface/Task';
-import Param from '@routes/interface/Param';
 import TaskRepository from '@repository/TaskRepository';
 import VWTaskRepository from '@repository/VWTaskRepository';
 
-class TaskController implements Controller<Task<Date>, Param> {
-  async store(request: Request<Task<Date>, Param>, response: Response) {
+class TaskController {
+  async store(request, response) {
     try {
       const task = getRepository(TaskModel);
       console.log(request.body.when);
@@ -24,7 +18,7 @@ class TaskController implements Controller<Task<Date>, Param> {
     }
   }
 
-  async index(request: Request<Task<Date>, Param>, response: Response) {
+  async index(request, response) {
     try {
       const task = getRepository(TaskModel);
       const res = await task.find();
@@ -37,7 +31,7 @@ class TaskController implements Controller<Task<Date>, Param> {
     }
   }
 
-  async update(request: Request<Task<Date>, Param>, response: Response) {
+  async update(request, response) {
     try {
       const { id } = request.params;
 
@@ -53,7 +47,7 @@ class TaskController implements Controller<Task<Date>, Param> {
     }
   }
 
-  async delete(request: Request<Task<Date>, Param>, response: Response) {
+  async delete(request, response) {
     try {
       const { id } = request.params;
       console.log(`Cheguei no Controller`);
@@ -70,7 +64,7 @@ class TaskController implements Controller<Task<Date>, Param> {
     }
   }
 
-  async allMacaddress(request: Request<Task<Date>, Param>, response: Response) {
+  async allMacaddress(request, response) {
     try {
       const { macaddress } = request.params;
 
@@ -87,7 +81,7 @@ class TaskController implements Controller<Task<Date>, Param> {
     }
   }
 
-  async show(request: Request<Task<Date>, Param>, response: Response) {
+  async show(request, response) {
     try {
       const { id } = request.params;
 
@@ -102,7 +96,7 @@ class TaskController implements Controller<Task<Date>, Param> {
     }
   }
 
-  async done(request: Request<Task<Date>, Param>, response: Response) {
+  async done(request, response) {
     try {
       const { id, done } = request.params;
 
@@ -126,7 +120,7 @@ class TaskController implements Controller<Task<Date>, Param> {
     }
   }
 
-  async late(request: Request<Task<Date>, Param>, response: Response) {
+  async late(request, response) {
     try {
       const { macaddress } = request.params;
 
@@ -142,7 +136,7 @@ class TaskController implements Controller<Task<Date>, Param> {
     }
   }
 
-  async today(request: Request<Task<string>, Param>, response: Response) {
+  async today(request, response) {
     try {
       const { macaddress } = request.params;
 
@@ -158,7 +152,7 @@ class TaskController implements Controller<Task<Date>, Param> {
     }
   }
 
-  async week(request: Request<Task<string>, Param>, response: Response) {
+  async week(request, response) {
     try {
       const { macaddress } = request.params;
 
@@ -173,7 +167,7 @@ class TaskController implements Controller<Task<Date>, Param> {
     }
   }
 
-  async month(request: Request<Task<string>, Param>, response: Response) {
+  async month(request, response) {
     try {
       const { macaddress } = request.params;
 
@@ -188,7 +182,7 @@ class TaskController implements Controller<Task<Date>, Param> {
     }
   }
 
-  async year(request: Request<Task<string>, Param>, response: Response) {
+  async year(request, response) {
     try {
       const { macaddress } = request.params;
 
